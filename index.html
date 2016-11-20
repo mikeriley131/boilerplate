@@ -14,15 +14,17 @@
 		<!-- For IE 10 and below -->
 		<!-- No link, just place a file called favicon.ico in the root directory -->
 
-		<!-- For IE 11, Chrome, Firefox, Safari, Opera -->
-		<link rel="icon" href="path/to/favicon-16.png" sizes="16x16" type="image/png">
-		<link rel="icon" href="path/to/favicon-32.png" sizes="32x32" type="image/png">
-		<link rel="icon" href="path/to/favicon-48.png" sizes="48x48" type="image/png">
-		<link rel="icon" href="path/to/favicon-62.png" sizes="62x62" type="image/png">
-		<link rel="icon" href="path/to/favicon-192.png" sizes="192x192" type="image/png">
-		<!-- More info: https://bitsofco.de/all-about-favicons-and-touch-icons/ -->
+		<!-- For IE 11, Edge, Chrome, Firefox, Safari, Opera -->
+		<!-- Use http://realfavicongenerator.net/ -->
+		<!-- Place files in root directory -->
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+		<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+		<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+		<link rel="manifest" href="/manifest.json">
+		<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+		<meta name="theme-color" content="#ffffff">
 
-		<meta property="fb:app_id" content="123456789">
+		<!-- FB meta tags -->
 		<meta property="og:url" content="https://example.com/page.html">
 		<meta property="og:type" content="website">
 		<meta property="og:title" content="Content Title">
@@ -30,10 +32,10 @@
 		<meta property="og:description" content="Description Here">
 		<meta property="og:site_name" content="Site Name">
 		<meta property="og:locale" content="en_US">
-		<meta property="article:author" content="">
 		<!-- Facebook: https://developers.facebook.com/docs/sharing/webmasters#markup -->
 		<!-- Open Graph: http://ogp.me/ -->
 
+		<!-- Twitter meta tags -->
 		<meta name="twitter:card" content="summary">
 		<meta name="twitter:site" content="@site_account">
 		<meta name="twitter:creator" content="@individual_account">
@@ -49,8 +51,21 @@
 		<![endif]-->
 	</head>
 	<body>
+		<!-- a handy skip link for keyboard users -->
+		<a href="#main">skip to main content</a>
+
+		<header class="header" role="banner">
+
+		</header>
+
+		<main class="main" id="main">
 		<!-- Content goes here -->
 
+		</main>
+
+		<footer class="footer" role="contentinfo">
+
+		</footer>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.3.min.js"><\/script>')</script>

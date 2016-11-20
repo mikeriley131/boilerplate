@@ -13,10 +13,10 @@
 
 html {
   font-size: 100%; // Fallback for @include below. Set to browser default and then use ems when declaring your various font-sizes. (MR)
+  font-size: calc(1em + 1vw); // Implicitly scalable
   @include fluid-type(font-size, 480px, 1600px, 16px, 18px);
 
   color: #222;
-  line-height: 1.618; // Golden Ratio, arguably optimal line-height. (MR)
 }
 
 /*
@@ -96,6 +96,18 @@ html {
   box-sizing: inherit;
 }
 
+/* Skip link
+-------------------------------------------------------------------*/
+[href="#main"] {
+  position: absolute;
+  top: 0;
+  right: 100%;
+}
+
+[href="#main"]:focus {
+  right: auto;
+}
+
 /* Typography
   modification of
   (http://typecast.com/blog/a-more-modern-scale-for-web-typography)
@@ -111,6 +123,7 @@ body, caption, th, td, input, textarea, select, option, legend, fieldset, h1, h2
 main {
   font-size: 1.125em; // 18px
   line-height: 1.5; // 27px
+  max-width: 60rem;
 
   @include brk-med {
     font-size: 1.125em; // 18px
@@ -345,6 +358,10 @@ code {
                                http://www.sanbeiji.com/archives/953 */
     box-shadow: none !important;
     text-shadow: none !important;
+  }
+
+  body > *:not(main) {
+    display: none;
   }
 
   a,
