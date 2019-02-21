@@ -1,3 +1,5 @@
+// sass-lint:disable no-css-comments, mixins-before-declarations, no-vendor-prefixes, single-line-per-selector, force-pseudo-nesting, force-element-nesting, force-attribute-nesting, no-qualifying-elements, class-name-format
+
 /*! HTML5 Boilerplate v5.2.0 | MIT License | https://html5boilerplate.com/ */
 /* (modified to suit site) */
 
@@ -10,13 +12,18 @@
 /* ==========================================================================
    Base styles: opinionated defaults
    ========================================================================== */
-
 html {
+  box-sizing: border-box;
+  color: $text-clr;
   font-size: 100%; // Fallback for @include below. Set to browser default and then use ems when declaring your various font-sizes. (MR)
-  font-size: calc(1em + 1vw); // Implicitly scalable
-  @include fluid-type(font-size, 480px, 1600px, 16px, 18px);
+  line-height: 1.5;
 
-  color: #222;
+  $map: (18.75em: 1em, 45em: 1.0625em, 60em: 1.125em, 75em: 1.25em); // (300px / 720px / 960px / 1200px)
+  @include poly-fluid-sizing('font-size', $map);;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 
 /*
@@ -28,12 +35,12 @@ html {
  */
 
 ::-moz-selection {
-  background: #b3d4fc;
+  background: $selection;;
   text-shadow: none;
 }
 
 ::selection {
-  background: #b3d4fc;
+  background: $selection;
   text-shadow: none;
 }
 
@@ -42,10 +49,10 @@ html {
  */
 
 hr {
+  border: 0;
+  border-top: 1px solid $grey;
   display: block;
   height: 1px;
-  border: 0;
-  border-top: 1px solid #ccc;
   margin: 1em 0;
   padding: 0;
 }
@@ -87,24 +94,17 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
-/* More intuitive box model
------------------------------------------------------------------------------- */
-html {
-  box-sizing: border-box; // More intuitive box model.
-}
-*, *:before, *:after {
-  box-sizing: inherit;
-}
-
 /* Skip link
 -------------------------------------------------------------------*/
-[href="#main"] {
+.skip-link {
+  padding: .5rem;
   position: absolute;
-  top: 0;
   right: 100%;
+  top: 0;
 }
 
-[href="#main"]:focus {
+.skip-link:focus {
+  left: calc(50% - 84px);
   right: auto;
 }
 
@@ -113,127 +113,128 @@ html {
   (http://typecast.com/blog/a-more-modern-scale-for-web-typography)
 ------------------------------------------------------------------------------ */
 body {
-  font-size: 100%;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 body, caption, th, td, input, textarea, select, option, legend, fieldset, h1, h2, h3, h4, h5, h6 {
-  font-size-adjust: 0.5;
+  font-size-adjust: .5;
 }
 
-main {
-  font-size: 1.125em; // 18px
-  line-height: 1.5; // 27px
-  max-width: 60rem;
-
-  @include brk-med {
-    font-size: 1.125em; // 18px
-    line-height: 1.66; // 30px
-  }
+/*
+ * Keep line-length to around 45-55 characters.
+ */
+p,
+blockquote,
+li {
+  max-width: 40rem;
 }
 
 h1 {
-  font-size: 2em; // 32px
-  line-height: 1.25; // 40px
+  font-size: 2.5rem;
+  line-height: 1.25;
 
-  @include brk-med {
-    font-size: 2.5em; // 40px
-    line-height: 1.125; // 45px
+  @include mq($M) {
+    font-size: 2.75rem;
+    line-height: 1.125;
   }
 
-  @include brk-xlarge {
-    font-size: 3em; // 48px
-    line-height: 1.05; // 50px
+  @include mq($XL) {
+    font-size: 3rem;
+    line-height: 1.05;
   }
 }
 
 h2 {
-  font-size: 1.625em; // 26px
-  line-height: 1.15384615; // 30px
+  font-size: 1.5rem;
+  line-height: 1.15384615;
 
-  @include brk-med {
-    font-size: 2em; // 32px
-    line-height: 1.25; // 40px
+  @include mq($M) {
+    font-size: 1.625rem;
+    line-height: 1.25;
   }
 
-  @include brk-xlarge {
-    font-size: 2.25em; // 36px
-    line-height: 1.25; // 45px
+  @include mq($XL) {
+    font-size: 1.75rem;
+    line-height: 1.25;
   }
 }
 
 h3 {
-  font-size: 1.375em; // 22px
-  line-height: 1.13636364; // 25px
-  text-transform: lowercase;
+  font-size: 1.125rem;
   font-variant: small-caps;
+  line-height: 1.13636364;
+  text-transform: lowercase;
 
-  @include brk-med {
-    font-size: 1.5em; // 24px
-    line-height: 1.25; // 30px
+  @include mq($M) {
+    font-size: 1.25rem;
+    line-height: 1.25;
   }
 
-  @include brk-xlarge {
-    font-size: 1.75em; // 28px
-    line-height: 1.25; // 35px
-  }
-}
-
-h4 {
-  font-size: 1.125em; // 18px
-  line-height: 1.11111111; // 20px
-
-  @include brk-med {
-    font-size: 1.25em; // 20px
-    line-height: 1.25; // 25px
-  }
-
-  @include brk-xlarge {
-    font-size: 1.5em; // 24px
-    line-height: 1.25; // 30px
+  @include mq($XL) {
+    font-size: 1.375rem;
+    line-height: 1.25;
   }
 }
 
 blockquote {
-  font-size: 1.25em; // 20px
-  line-height: 1.25; // 25px
-
-  @include brk-med {
-    font-size: 1.5em; // 24px
-    line-height: 1.25; // 30px
-  }
-
-  @include brk-xlarge {
-    font-size: 1.75em; // 30px
-    line-height: 1.25; // 36px
-  }
-}
-
-dl {
+  font-size: 1.25rem;
   line-height: 1.25;
+
+  @include mq($M) {
+    font-size: 1.5rem;
+    line-height: 1.25;
+  }
+
+  @include mq($XL) {
+    font-size: 1.75rem;
+    line-height: 1.25;
+  }
 }
 
 /* Only set margins below primary text elements for more intuitive spacing
 ------------------------------------------------------------------------------ */
-h1, h2, h3,h4 ,h5, h6, p {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   margin-top: 0;
+}
+
+/* Images
+-------------------------------------------------------------------*/
+img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+/* SVGs
+-------------------------------------------------------------------*/
+svg {
+    fill: currentColor;
+    height: 1rem;
+    width: 1rem;
 }
 
 /* Lists
 ------------------------------------------------------------------------------ */
-ul, ol {
+ul,
+ol {
   margin: 0;
-  padding: 0 1em 1em;
+  padding: 0;
 }
 
 ul {
-  list-style-type: disc;
+  list-style: none;
 }
 
 ol {
-  list-style-type: decimal;
+  list-style: decimal;
 }
 
 li {
@@ -241,8 +242,15 @@ li {
 }
 
 dl {
+  line-height: 1.25;
   margin: 0;
-  padding: 0 0 1em 0;
+  padding: 0 0 1em;
+}
+
+/* Forms
+-------------------------------------------------------------------*/
+label[for] {
+  cursor: pointer;
 }
 
 /* Code formatting
@@ -252,7 +260,17 @@ pre {
 }
 
 code {
-  background: #eee;
+  background-color: $grey-light;
+}
+
+
+/* Disable CSS animations if user preference
+-------------------------------------------------------------------*/
+@media (prefers-reduced-motion: reduce) {
+  * {
+     animation: none !important; // sass-lint:disable-line no-important
+     transition: none !important; // sass-lint:disable-line no-important
+  }
 }
 
 /* ==========================================================================
@@ -263,8 +281,9 @@ code {
  * Hide visually and from screen readers:
  */
 
+[hidden],
 .hidden {
-  display: none !important;
+  display: none !important; // sass-lint:disable-line no-important
 }
 
 /*
@@ -321,16 +340,16 @@ code {
 
 .clearfix:before,
 .clearfix:after {
-    content: ""; /* 1 */
-    display: table; /* 2 */
+  content: ''; /* 1 */
+  display: table; /* 2 */
 }
 
 .clearfix:after {
-    clear: both;
+  clear: both;
 }
 
 .clearfix {
-    zoom: 1; /* For IE 6/7 (trigger hasLayout) */
+  zoom: 1; /* For IE 6/7 (trigger hasLayout) */
 }
 
 /* ==========================================================================
@@ -340,27 +359,26 @@ code {
    ========================================================================== */
 
 @media print,
-   (-webkit-min-device-pixel-ratio: 1.25),
-   (min-resolution: 1.25dppx),
-   (min-resolution: 120dpi) {
-  /* Style adjustments for high resolution devices */
+  (-webkit-min-device-pixel-ratio: 1.25),
+  (min-resolution: 1.25dppx),
+  (min-resolution: 120dpi) {
+    /* Style adjustments for high resolution devices */
 }
 
 /* ==========================================================================
-   Print styles.
-   Inlined to avoid the additional HTTP request:
-   http://www.phpied.com/delay-loading-your-print-css/
-   ========================================================================== */
+  Print styles.
+  Inlined to avoid the additional HTTP request:
+  http://www.phpied.com/delay-loading-your-print-css/
+  ========================================================================== */
 
 @media print {
   *,
   *:before,
   *:after {
-    background: transparent !important;
-    color: #000 !important; /* Black prints faster:
-                               http://www.sanbeiji.com/archives/953 */
-    box-shadow: none !important;
-    text-shadow: none !important;
+    background: transparent !important; // sass-lint:disable-line no-important
+    box-shadow: none !important; // sass-lint:disable-line no-important
+    color: $black !important; // sass-lint:disable-line no-important
+    text-shadow: none !important; // sass-lint:disable-line no-important
   }
 
   body > *:not(main) {
@@ -373,11 +391,11 @@ code {
   }
 
   a[href]:after {
-    content: " (" attr(href) ")";
+    content: ' (' attr(href) ')';
   }
 
   abbr[title]:after {
-    content: " (" attr(title) ")";
+    content: ' (' attr(title) ')';
   }
 
   /*
@@ -385,14 +403,14 @@ code {
    * or use the `javascript:` pseudo protocol
    */
 
-  a[href^="#"]:after,
-  a[href^="javascript:"]:after {
-    content: "";
+  a[href^='#']:after,
+  a[href^='javascript:']:after {
+    content: '';
   }
 
   pre,
   blockquote {
-    border: 1px solid #999;
+    border: 1px solid $grey-lighter;
     page-break-inside: avoid;
   }
 
@@ -411,7 +429,9 @@ code {
   }
 
   img {
-    max-width: 100% !important;
+    display: block;
+    height: auto;
+    max-width: 100%;
   }
 
   p,

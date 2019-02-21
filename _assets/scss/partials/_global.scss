@@ -3,129 +3,111 @@
 // ===========================================================================
 body {
   background: $bg-clr;
-  counter-reset: number;
   font-family: $font-stack;
 }
 
 main {
-  padding: 2em 0;
 
-  p {
-    margin-bottom: 1.5em;
+  p,
+  ul,
+  ol {
+    margin-bottom: $space;
 
     &:last-child {
-       margin-bottom: 0;
-    }
-  }
-
-  a {
-    background-image: linear-gradient(to right, currentColor 0%, currentColor 100%);
-    background-position: bottom .05em center;
-    background-repeat: repeat-x;
-    background-size: 100% .05em;
-    color: $link-clr;
-    text-decoration: none;
-    text-shadow: .05em 0 0 $link-clr,
-                 -.05 0 0 $link-clr,
-                 0 .05 0 $link-clr,
-                 0 -.05 0 $link-clr,
-                 .1em 0 0 $link-clr,
-                 -.1em 0 0 $link-clr,
-                 0 .1em 0 $link-clr,
-                 0 -.1em 0 $link-clr;
-
-    &:hover,
-    &:active {
-      color: darken($link-clr, 20%)
-    }
-
-    &:focus {
-      background-color: #cef;
-      outline: none;
-      text-shadow: .05em 0 0 #cef,
-                   -.05 0 0 #cef,
-                   0 .05 0 #cef,
-                   0 -.05 0 #cef,
-                   .1em 0 0 #cef,
-                   -.1em 0 0 #cef,
-                   0 .1em 0 #cef,
-                   0 -.1em 0 #cef;
+      margin-bottom: 0;
     }
   }
 
   ul {
+    list-style: none;
+  }
 
-    li:before {
-      content: '\2219';
-      color: $highlight-clr;
-      margin-right: .5em;
+  ul.aligned-list {
+    list-style: disc;
+    margin-left: $half-space;
+
+    li {
+      margin-bottom: $half-space;
+      padding-left: $space;
+      text-indent: -$space;
     }
   }
 
-  ol {
+  a {
+    border-bottom: 1px dashed $link-clr;
+    color: $link-clr;
+    padding-bottom: 2px;
+    text-decoration: none;
 
-    li:before {
-      counter-increment: number;
-      content: counter(number);
-      color: $highlight-clr;
-      margin-right: .5em;
+    &:hover,
+    &:active {
+      color: $link-hover-clr;
     }
-  }
-
-  li {
-    text-indent: -1.5em;
-    padding-left: 1.5em;
-    margin-bottom: .5em;
-  }
-
-  li {
-    text-indent: -1.5em;
-    padding-left: 1.5em;
-    margin-bottom: .5em;
   }
 }
 
+h1,
 h2 {
-  margin-bottom: .5em;
+  margin-bottom: .5rem;
 }
 
-h3, h4, h5, h6 {
-  margin-bottom: .25em;
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: .25rem;
 }
 
-ul, ol {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  margin-bottom: 1em;
+nav {
+  ul {
+     display: flex;
+     justify-content: space-between;
+     list-style: none;
+  }
 }
 
 blockquote {
-  font-size: 1.25em;
-  font-style: italic;
-  padding: 0 1em;
   border-left: 4px solid $highlight-clr;
-}
-
-img {
-  display: block;
-  max-width: 100%;
-  width: 100%;
+  font-size: 1.25rem;
+  font-style: italic;
+  padding: 0 1rem;
 }
 
 small {
-  font-size: .85em;
-  margin-bottom: 1em;
+  font-size: .85rem;
+  margin-bottom: 1rem;
 }
 
-iframe {
-  max-width: 100%;
-  margin: 0 auto;
-  display: block;
+figure {
+  margin: 0 $space;
+}
+
+.iframe-container {
+  height: 0;
+  margin-bottom: 1rem;
+  position: relative;
+  overflow: hidden;
+
+  &.iframe-container-16x9 {
+    padding-bottom: 56.25%; // for 16x9 windows
+  }
+
+  &.iframe-container-4x3 {
+    padding-bottom: 75%; // for 4x3 windows
+  }
+
+  iframe {
+    border: none;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top:0;
+    width: 100%;
+  }
 }
 
 table {
-  margin-bottom: 2em;
+  margin-bottom: 2rem;
 }
 
 tr {
@@ -136,20 +118,24 @@ tr {
 
 th {
   border-bottom: 1px solid $highlight-clr;
-  padding: .5em;
+  padding: .5rem;
   padding-bottom: 0;
   text-align: left;
 }
 
 td {
-  padding: .5em;
+  padding: .5rem;
 }
 
 .container {
-  @include container;
-  padding: 0 .5em;
+  padding: 0 .5rem;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1040px;
+  width: 100%;
 
-  @include brk-large {
+  @include mq($L) {
+    max-width: 1200px;
     padding: 0;
   }
 }
