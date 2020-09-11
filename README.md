@@ -21,7 +21,7 @@
 
 3.  **Start developing.**
 
-    Navigate into your the project directory and start it up.
+    Navigate into the project directory and start it up.
 
     ```sh
     grunt

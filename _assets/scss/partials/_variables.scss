@@ -4,67 +4,19 @@
 
 // RESPONSIVE MEDIA QUERIES
 // ------------------------------------------------------------------------------
-$breakpoint-xs: 18.75em;  // 300px
-$breakpoint-s: 30em;      // 480px
-$breakpoint-m: 45em;      // 720px
-$breakpoint-l: 60em;      // 960px
-$breakpoint-xl: 75em;     // 1200px
-$breakpoint-xxl: 90em;    // 1440px
+$breakpoint-xs: 18.75em; // 300px
+$breakpoint-s: 30em; // 480px
+$breakpoint-m: 45em; // 720px
+$breakpoint-l: 60em; // 960px
+$breakpoint-xl: 75em; // 1200px
+$breakpoint-xxl: 90em; // 1440px
 
-$XS: 'min-width:'+ $breakpoint-xs;
-$S: 'min-width:'+ $breakpoint-s;
-$M: 'min-width:'+ $breakpoint-m;
-$L: 'min-width:'+ $breakpoint-l;
-$XL: 'min-width:'+ $breakpoint-xl;
-$XXL: 'min-width:'+ $breakpoint-xxl;
-
-@mixin mq($S) {
-  @media screen and (min-width: $brk-width-small) {
-    @content;
-  }
-}
-
-@mixin mq($M) {
-  @media screen and (min-width: $brk-width-med) {
-    @content;
-  }
-}
-
-@mixin mq($L) {
-  @media screen and (min-width: $brk-width-large) {
-    @content;
-  }
-}
-
-@mixin mq($XL) {
-  @media screen and (min-width: $brk-width-xlarge) {
-    @content;
-  }
-}
-
-@mixin mq($S) {
-  @media screen and (min-width: $brk-width-small) {
-    @content;
-  }
-}
-
-@mixin mq($M) {
-  @media screen and (min-width: $brk-width-med) {
-    @content;
-  }
-}
-
-@mixin mq($L) {
-  @media screen and (min-width: $brk-width-large) {
-    @content;
-  }
-}
-
-@mixin mq($XL) {
-  @media screen and (min-width: $brk-width-xlarge) {
-    @content;
-  }
-}
+$XS: "min-width:" + $breakpoint-xs;
+$S: "min-width:" + $breakpoint-s;
+$M: "min-width:" + $breakpoint-m;
+$L: "min-width:" + $breakpoint-l;
+$XL: "min-width:" + $breakpoint-xl;
+$XXL: "min-width:" + $breakpoint-xxl;
 
 // FONTS
 // ------------------------------------------------------------------------------
@@ -100,7 +52,10 @@ $selection: $yellow;
 // SPACING
 // ------------------------------------------------------------------------------
 $space: 1.5rem;
-$double-space: $space*2;
+$double-space: $space * 2;
 $half-space: $space/2;
 $quarter-space: $space/4;
 $eighth-space: $space/8;
+
+$container-width-small: 960px;
+$container-width-large: 1200px;
