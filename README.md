@@ -8,7 +8,7 @@
 
     ```sh
     npm install -g grunt-cli
-    gem install sass
+    brew install sass/sass/sass
     ```
 
 2.  **Install dependencies.**
